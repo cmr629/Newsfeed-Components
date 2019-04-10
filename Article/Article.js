@@ -9,6 +9,7 @@ class Article {
     this.expandButton = domElement.querySelector('.expandButton');
     this.expandButtonText = ['expand', 'close'];
     this.expandTextToggle = 0;
+    this.domElement.classList.toggle('article-close');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = this.expandButtonText[this.expandTextToggle ];
     
@@ -24,6 +25,7 @@ class Article {
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle('article-open');
+    this.domElement.classList.toggle('article-close');
     this.expandTextToggle =   (this.expandTextToggle + 1) % 2; //Toggle button text
     this.expandButton.textContent = this.expandButtonText[this.expandTextToggle ];
   }
@@ -31,6 +33,7 @@ class Article {
   blurArticle(){
     if (this.domElement.classList.contains('article-open')){
       this.domElement.classList.toggle('article-open');
+      this.domElement.classList.toggle('article-close');
       this.expandButton.textContent = this.expandButtonText[0];  //Set button back to close
       this.expandTextToggle = 0;
     }
@@ -39,6 +42,7 @@ class Article {
   keyDownArticle(event){
     if (event.keyCode === 32){ //spacebar pressed
       this.domElement.classList.toggle('article-open');
+      this.domElement.classList.toggle('article-close');
       this.expandTextToggle =   (this.expandTextToggle + 1) % 2;  //Toggle button text
       this.expandButton.textContent = this.expandButtonText[this.expandTextToggle ];
     }
@@ -56,4 +60,5 @@ class Article {
 let articles = document.querySelectorAll('.article');
 articles.forEach((article) => {
     return new Article(article);
-})
+});
+
