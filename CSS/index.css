@@ -103,7 +103,17 @@
   background-color: white;
 }
 .article-open {
+  animation-name: open;
+  animation-duration: 0.5s;
   height: 400px;
+}
+@keyframes open {
+  from {
+    height: 50px;
+  }
+  to {
+    height: 400px;
+  }
 }
 html,
 body {
