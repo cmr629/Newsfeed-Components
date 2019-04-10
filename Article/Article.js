@@ -10,13 +10,13 @@ class Article {
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = "expand";
     
-    this.domElement.setAttribute('tabindex', '0');
+    this.domElement.setAttribute('tabindex', '0');  //needed to use blur
      
 
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.domElement.addEventListener('blur', this.blurArticle.bind(this));
     this.domElement.addEventListener('click', this.expandArticle.bind(this));
-
+    this.domElement.addEventListener('keydown', this.keyDownArticle.bind(this));
   }
 
   expandArticle() {
@@ -26,12 +26,14 @@ class Article {
   }
 
   blurArticle(){
-
     if (this.domElement.classList.contains('article-open'))
       this.domElement.classList.toggle('article-open');
-
-    console.log("blur");
   }
+
+  keyDownArticle(event){
+    if (event.keyCode === 32) //spacebar pressed
+      this.domElement.classList.toggle('article-open');
+   }
 }
  
 /* START HERE: s
